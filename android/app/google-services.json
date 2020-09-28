@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "68406690972",
+    "firebase_url": "https://live-streaming-app-c0e02.firebaseio.com",
+    "project_id": "live-streaming-app-c0e02",
+    "storage_bucket": "live-streaming-app-c0e02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68406690972:android:6135143d6ea50cb2155959",
+        "android_client_info": {
+          "package_name": "com.example.livestreamingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68406690972-6ko4aid88skrj2rqp9kguncf95kspumq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.livestreamingapp",
+            "certificate_hash": "29e163989c83841f893383b3566c8936ac8e32fa"
+          }
+        },
+        {
+          "client_id": "68406690972-m9kf6gate6bgb32e9cqfd1adkr1o773a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5nlVlQTFkNFFZNPcRGgw3aONCxPE6f5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68406690972-m9kf6gate6bgb32e9cqfd1adkr1o773a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
