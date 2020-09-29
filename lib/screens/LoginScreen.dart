@@ -1,7 +1,9 @@
+import 'package:basecode/repositories/FirebaseRepository.dart';
 import 'package:basecode/screens/DashboardScreen.dart';
 import 'package:basecode/screens/ForgotPasswordScreen.dart';
 import 'package:basecode/screens/RegistrationScreen.dart';
 import 'package:basecode/widgets/SecondaryButton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../widgets/PrimaryButton.dart';
@@ -15,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
+  final FirebaseRepository firebaseRepository = FirebaseRepository();
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
@@ -72,11 +75,7 @@ class LoginScreenState extends State<LoginScreen> {
                   PrimaryButton(
                       text: "Sign-in with Google",
                       iconData: FontAwesomeIcons.google,
-                      onPress: () {
-                        //authenticate here
-                        Navigator.pushReplacementNamed(
-                            context, DashboardScreen.routeName);
-                      }),
+                      onPress: login),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -104,5 +103,27 @@ class LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void login() {
+    firebaseRepository.signInWithGoogle().then((UserCredential userCredential) {
+      if (UserCredential != null) {
+        authenticateUser(userCredential);
+      } else {
+        print("error login");
+      }
+    });
+  }
+
+  void authenticateUser(UserCredential userCredential) {
+    firebaseRepository.authenticateUser(userCredential).then((isNewUser) {
+      if (isNewUser) {
+        firebaseRepository.addNewUser(userCredential).then((value) {
+          Navigator.pushReplacementNamed(context, DashboardScreen.routeName);
+        });
+      } else {
+        Navigator.pushReplacementNamed(context, DashboardScreen.routeName);
+      }
+    });
   }
 }
