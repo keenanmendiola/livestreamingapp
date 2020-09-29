@@ -14,4 +14,6 @@ class FirebaseRepository {
 
   Future<void> addNewUser(UserCredential userCredential) =>
       firebaseService.addNewUser(userCredential);
+
+  Future<void> signOut() => firebaseService.signOut();
 }

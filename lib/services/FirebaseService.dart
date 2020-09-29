@@ -64,4 +64,10 @@ class FirebaseService {
         .doc(userCredential.user.uid)
         .set(account.toMap(account));
   }
+
+  Future<void> signOut() async {
+    await googleSignIn.disconnect();
+    await googleSignIn.signOut();
+    return await auth.signOut();
+  }
 }
